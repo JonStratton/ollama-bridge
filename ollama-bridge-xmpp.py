@@ -20,7 +20,7 @@ class OllamaBridge(slixmpp.ClientXMPP):
 
    def message(self, msg):
       if msg['type'] in ('chat', 'normal'):
-         user = msg['from']
+         user = str(msg['from']).split('/')[0]
          if not self.user_messages.get(user):
             self.user_messages[user] = []
 
